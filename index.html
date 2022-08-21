@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Multistep Account Register</title>
+  </head>
+  <body>
+    <div class="form-wrapper">
+      <!-- Progress bar & it's steps -->
+      <div class="progress-wrapper">
+        <div class="bar-wrapper">
+          <div class="bar"></div>
+        </div>
+        <div class="progress-step active" id="step_1">
+          <p>Account setup</p>
+        </div>
+        <div class="progress-step" id="step_2">
+          <p>Personal details</p>
+        </div>
+        <div class="progress-step" id="step_3">
+          <p>Social profiles</p>
+        </div>
+      </div>
+      <form data-steps>
+        <!-- Email & password -->
+        <div class="card active" data-step>
+          <div class="card-header">
+            <h3 class="card-title">Create your account</h3>
+          </div>
+          <div class="form-group">
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              placeholder="Email"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <input
+              type="password"
+              class="form-control"
+              id="password"
+              placeholder="Password"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <input
+              type="password"
+              class="form-control"
+              id="confirm_password"
+              placeholder="Confirm Password"
+              required
+            />
+          </div>
+          <div class="btn-group">
+            <button class="btn" data-next="true">Next</button>
+          </div>
+        </div>
+        <!-- Personal details -->
+        <div class="card" data-step>
+          <div class="card-header">
+            <h3 class="card-title">Personal details</h3>
+            <p class="subtitle">We will never sell it</p>
+          </div>
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control"
+              id="first_name"
+              placeholder="First Name"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control"
+              id="last_name"
+              placeholder="Last Name"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <input
+              type="tel"
+              class="form-control"
+              id="phone"
+              pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+              title="The format is xxx-xxx-xxxx"
+              placeholder="Phone"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <textarea
+              id="address"
+              class="form-control"
+              placeholder="Address"
+              required
+            ></textarea>
+          </div>
+          <div class="btn-group">
+            <button class="btn" data-previous="true">Previous</button>
+            <button class="btn" data-next="true">Next</button>
+          </div>
+        </div>
+        <!-- Social profiles -->
+        <div class="card" data-step>
+          <div class="card-header">
+            <h3 class="card-title">Social profiles</h3>
+            <p class="subtitle">Your presence on the social network</p>
+          </div>
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control"
+              id="twitter"
+              placeholder="Twitter"
+            />
+          </div>
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control"
+              id="facebook"
+              placeholder="Facebook"
+            />
+          </div>
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control"
+              id="google_plus"
+              placeholder="Google Plus"
+            />
+          </div>
+          <div class="btn-group">
+            <button class="btn" data-previous="true">Previous</button>
+            <button type="submit" class="btn" data-submit="true">Submit</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <script src="index.js"></script>
+  </body>
+</html>

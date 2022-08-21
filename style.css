@@ -1,0 +1,195 @@
+:root {
+  --progress-primary: #549a89;
+  --input-primary: #aaa;
+  --completed: #fa976b;
+  --border-radius: 4px;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  height: 100vh;
+  font-family: "Montserrat", sans-serif;
+  background: #ffeadb;
+  color: #222825;
+  overflow: hidden;
+}
+.form-wrapper {
+  margin: 50px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+/* Progress bar & steps */
+.progress-wrapper {
+  width: 315px;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 55px;
+}
+.bar-wrapper {
+  position: absolute;
+  inset: 50% 0;
+  height: 2px;
+  background: var(--progress-primary);
+}
+/* When progress fills */
+.bar {
+  position: absolute;
+  width: 0;
+  height: 100%;
+  background: var(--completed);
+  transition: width 1s ease-in-out;
+}
+.progress-step {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  border-radius: var(--border-radius);
+  background: var(--progress-primary);
+  color: var(--progress-primary);
+  transition: background 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+.progress-step.active {
+  background: var(--completed);
+  color: var(--completed);
+}
+.progress-step::before {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #e5faf9;
+  font-size: 0.8rem;
+}
+#step_1::before {
+  content: "1";
+}
+#step_2::before {
+  content: "2";
+}
+#step_3::before {
+  content: "3";
+}
+.progress-step > p {
+  position: absolute;
+  inset: 30px auto auto;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  white-space: nowrap;
+  transform: translateX(-35%);
+}
+/* Form & cards */
+form {
+  position: relative;
+  min-width: 350px;
+  min-height: 500px;
+}
+.card {
+  --scale-out-duration: 0.8s;
+  --fade-in-duration: 0.5s;
+  position: absolute;
+  inset: 0 0 auto 0;
+  background: #fff;
+  padding: 1.5rem 2rem;
+  border-radius: var(--border-radius);
+  box-shadow: -2px 2px 10px 5px rgba(0, 0, 0, 0.15),
+    2px -2px 10px 5px rgba(0, 0, 0, 0.15);
+  animation: scaleOut var(--scale-out-duration) ease-in-out both;
+}
+.card.hide {
+  opacity: 0;
+}
+.card.active {
+  animation: fadeIn var(--fade-in-duration)
+    calc(var(--scale-out-duration) - 0.1s) both;
+}
+@keyframes scaleOut {
+  0% {
+    transform: scale(0.98);
+  }
+  40% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateX(200px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes fadeOut {
+  0% {
+    transform: translateX(0);
+  }
+  35% {
+    transform: translateX(-50px);
+  }
+  100% {
+    transform: translateX(200px);
+    opacity: 0;
+  }
+}
+.card-header {
+  margin-bottom: 1.5rem;
+}
+.card-title {
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+.subtitle {
+  font-size: 0.9rem;
+  text-align: center;
+  font-weight: 300;
+}
+/* Inputs */
+.form-group {
+  margin-bottom: 12px;
+}
+.form-control {
+  display: block;
+  width: 100%;
+  border-radius: var(--border-radius);
+  padding: 1rem;
+  border: 1px solid var(--input-primary);
+}
+.form-control::placeholder {
+  font-size: 0.9rem;
+  font-family: "Montserrat";
+}
+.btn-group {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 24px 0 10px;
+}
+.btn {
+  display: inline-block;
+  min-width: 115px;
+  padding: 10px 0;
+  color: #fff;
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  background: var(--completed);
+  transition: opacity 0.15s ease-in-out;
+}
+.btn:hover {
+  opacity: 0.8;
+}
